@@ -9,5 +9,8 @@ class ConsultarModelosPorModeloModel(
     override fun toString(): String {
         return modelos.toString()
             .replace(", ","\n")
+            .replace("[", "")
+            .replace("]", "")
+
     }
 }

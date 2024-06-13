@@ -24,10 +24,10 @@ class ConsultarTabelaDeReferencia : RequestInterface, ProcessaErroInterface {
             }
 
             println("\nDigite o código do mês de referência para buscar:")
-            val mesReferenciaEntrada = scanner.nextInt()
+            val codigoTabelaReferencia = scanner.nextLine().toInt()
 
             val tipoVeiculo = TipoVeiculo()
-            tipoVeiculo.tipoVeiculo(mesReferenciaEntrada)
+            tipoVeiculo.tipoVeiculo(codigoTabelaReferencia)
         }
 
         resultado.onFailure {

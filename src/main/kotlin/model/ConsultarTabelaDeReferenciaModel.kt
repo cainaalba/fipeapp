@@ -14,6 +14,6 @@ class ConsultarTabelaDeReferenciaModel {
     var mes = ""
 
     override fun toString(): String {
-        return "Mês: $mes -> Código: $codigo"
+        return "Mês: ${mes.trim()} -> Código: $codigo"
     }
 }

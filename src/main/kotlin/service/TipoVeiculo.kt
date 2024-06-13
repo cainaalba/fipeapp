@@ -3,28 +3,34 @@ package service
 import java.util.Scanner
 
 class TipoVeiculo {
-    fun tipoVeiculo(mesReferenciaEntrada: Int) {
+    fun tipoVeiculo(codigoTabelaReferencia: Int) {
         val scanner = Scanner(System.`in`)
 
         println("\nDigite o tipo do veículo que deseja buscar:")
         println(
-            " 1 -> Carros\n" +
+            " 1 -> Carros e Utilitários\n" +
                     " 2 -> Motos\n" +
-                    " 3 -> Caminhões"
+                    " 3 -> Caminhões e Micro-Ônibus"
         )
+        when (val codigoTipoVeiculo = scanner.nextLine().toInt()) {
+            1, 2, 3 -> {
+                println("\nDeseja buscar por código FIPE? (S/N)")
+                val pergunta = scanner.nextLine()
 
-        val tipoVeiculoEntrada = scanner.nextInt()
+                if (pergunta.equals("S", true)) {
+                    val consultarPorCodigoFipe = ConsultarValorComTodosParametros()
+                    consultarPorCodigoFipe.consultarPorCodigoFipe(codigoTabelaReferencia, codigoTipoVeiculo)
+                } else {
+                    val consultarMarcas = ConsultarMarcas()
+                    consultarMarcas.consultar(codigoTabelaReferencia, codigoTipoVeiculo)
+                }
+            }
 
-        if (tipoVeiculoEntrada != 1 &&
-            tipoVeiculoEntrada != 2 &&
-            tipoVeiculoEntrada != 3
-        ) {
-            println("\nTipo de veículo inválido!")
-            tipoVeiculo(mesReferenciaEntrada)
+            else -> {
+                println("\nTipo de veículo inválido!")
+                tipoVeiculo(codigoTabelaReferencia)
+            }
         }
-
-        val consultarMarcas = ConsultarMarcas()
-        consultarMarcas.buscar(mesReferenciaEntrada, tipoVeiculoEntrada)
         scanner.close()
     }
 }

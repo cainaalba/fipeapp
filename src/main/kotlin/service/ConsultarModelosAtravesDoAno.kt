@@ -8,7 +8,7 @@ import model.ConsultarModelosModel
 import java.util.Scanner
 
 class ConsultarModelosAtravesDoAno : RequestInterface, MontarJsonInterface, ProcessaErroInterface {
-    fun buscar(json: Map<String, Any>, codigoMarca: Int, anoModelo: Int) {
+    fun consultar(json: Map<String, Any>, codigoMarca: Int, anoModelo: Int) {
         val scanner = Scanner(System.`in`)
 
         val updaterJson = json.toMutableMap()
@@ -25,7 +25,7 @@ class ConsultarModelosAtravesDoAno : RequestInterface, MontarJsonInterface, Proc
             }
 
             println("\nDigite o código do modelo:")
-            val codigoModelo = scanner.nextInt()
+            val codigoModelo = scanner.nextLine().toInt()
             val consultarAnoModelo = ConsultarAnoModelo()
             consultarAnoModelo.consultar(updaterJson, codigoModelo)
         }

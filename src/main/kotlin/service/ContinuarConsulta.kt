@@ -8,7 +8,7 @@ class ContinuarConsulta {
         val scanner = Scanner(System.`in`)
 
         println("\nConsultar outro veículo? (S/N)")
-        val entrada = scanner.next()
+        val entrada = scanner.nextLine()
         if (entrada.equals("S", true)) {
             val consultarTabelaDeReferencia = ConsultarTabelaDeReferencia()
             consultarTabelaDeReferencia.consultar()

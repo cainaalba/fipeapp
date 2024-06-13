@@ -27,7 +27,7 @@ class ConsultarAnoModelo : RequestInterface, MontarJsonInterface, ProcessaErroIn
             }
 
             println("\nDigite o ano-combustivel (Ex: 2010-1, 2011-2) para buscar:")
-            val anoCombustivel = scanner.next()
+            val anoCombustivel = scanner.nextLine()
 
             val anoCombustivelEncontrado = buscarAnoModelo(anosCombustivel, anoCombustivel)
             val consultarValorComTodosParametros = ConsultarValorComTodosParametros()
