@@ -84,8 +84,8 @@ Endpoint: http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParamet
 {
    "codigoTabelaReferencia":"codigoTabelaReferencia",
    "codigoTipoVeiculo":"codigoTipoVeiculo",
-   "anoModelo":"anoModelo.toInt()",
-   "modeloCodigoExterno":"codigoFipe.toString()",
+   "anoModelo":"anoModelo",
+   "modeloCodigoExterno":"codigoFipe",
    "tipoConsulta":"codigo"
 }
 ```
