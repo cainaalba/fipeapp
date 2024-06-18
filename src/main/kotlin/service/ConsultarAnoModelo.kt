@@ -30,8 +30,13 @@ class ConsultarAnoModelo : RequestInterface, MontarJsonInterface, ProcessaErroIn
             val anoCombustivel = scanner.nextLine()
 
             val anoCombustivelEncontrado = buscarAnoModelo(anosCombustivel, anoCombustivel)
-            val consultarValorComTodosParametros = ConsultarValorComTodosParametros()
-            consultarValorComTodosParametros.consultar(updaterJson, anoCombustivelEncontrado!!.anoCombustivel)
+            if (anoCombustivelEncontrado != null) {
+                val consultarValorComTodosParametros = ConsultarValorComTodosParametros()
+                consultarValorComTodosParametros.consultar(updaterJson, anoCombustivelEncontrado.anoCombustivel)
+            } else {
+                println("Ano-Combustível informado inválido. Tente novamente!\n")
+                consultar(json, codigoModelo)
+            }
         }
 
         resultado.onFailure {
@@ -41,7 +46,10 @@ class ConsultarAnoModelo : RequestInterface, MontarJsonInterface, ProcessaErroIn
         scanner.close()
     }
 
-    private fun buscarAnoModelo(anosModeloModels: Array<ConsultarAnoModeloModel>, anoCombustivel: String): ConsultarAnoModeloModel? {
+    private fun buscarAnoModelo(
+        anosModeloModels: Array<ConsultarAnoModeloModel>,
+        anoCombustivel: String
+    ): ConsultarAnoModeloModel? {
         return anosModeloModels.find { it.anoCombustivel == anoCombustivel }
     }
 }

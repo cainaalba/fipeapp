@@ -8,7 +8,10 @@ import model.ConsultarValorComTodosParametrosModel
 import java.util.*
 
 class ConsultarValorComTodosParametros : RequestInterface, MontarJsonInterface, ProcessaErroInterface {
-    fun consultar(json: Map<String, Any>, codigoAnoCombustivel: String) {
+    fun consultar(
+        json: Map<String, Any>,
+        codigoAnoCombustivel: String
+    ) {
         val scanner = Scanner(System.`in`)
 
         val anoCombustivelParse = codigoAnoCombustivel.split("-")
@@ -25,20 +28,39 @@ class ConsultarValorComTodosParametros : RequestInterface, MontarJsonInterface, 
         scanner.close()
     }
 
-    fun consultarPorCodigoFipe(codigoTabelaReferencia: Int, codigoTipoVeiculo: Int) {
+    fun consultarPorCodigoFipe(
+        codigoTabelaReferencia: Int,
+        codigoTipoVeiculo: Int,
+        codigoFipe: String,
+        anoModelo: String
+    ) {
         val scanner = Scanner(System.`in`)
+        var codigoFipeEntrada: String
+        var anoModeloEntrada: String
 
-        println("Informe o código FIPE: ")
-        val codigoFipe = scanner.nextLine()
+        if (codigoFipe.isBlank()) {
+            do {
+                println("Informe o código FIPE:")
+                codigoFipeEntrada = scanner.nextLine()
+            } while (codigoFipeEntrada.isBlank())
+        } else {
+            codigoFipeEntrada = codigoFipe
+        }
 
-        println("Digite o ano do veículo:")
-        val anoModelo = scanner.nextLine()
+        if (anoModelo.isBlank()) {
+            do {
+                println("Digite o ano do veículo:")
+                anoModeloEntrada = scanner.nextLine()
+            } while (anoModeloEntrada.isBlank())
+        } else {
+            anoModeloEntrada = anoModelo
+        }
 
         val json = mapOf(
             "codigoTabelaReferencia" to codigoTabelaReferencia,
             "codigoTipoVeiculo" to codigoTipoVeiculo,
-            "anoModelo" to anoModelo.toInt(),
-            "modeloCodigoExterno" to codigoFipe.toString(),
+            "anoModelo" to anoModeloEntrada.toInt(),
+            "modeloCodigoExterno" to codigoFipeEntrada,
             "tipoConsulta" to "codigo"
         )
         val jsonString = montaJson(json)

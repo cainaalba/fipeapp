@@ -11,8 +11,9 @@ interface ProcessaErroInterface {
             println(erro.toString())
         }
 
-        resultado.onFailure { e ->
-            println(e.message)
+        resultado.onFailure {
+            println("Retorno: $responseBody\nErro: ${it.message}")
+            return
         }
 
         resultado.onSuccess {

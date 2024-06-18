@@ -1,11 +1,11 @@
 package model
 
 class NadaEncontradoModel {
-    var codio = ""
+    var codigo = ""
     val erro = ""
 
     override fun toString(): String {
-        return "Código: $codio\n" +
+        return "Código: $codigo\n" +
                 "Erro: $erro\n"
     }
 }
