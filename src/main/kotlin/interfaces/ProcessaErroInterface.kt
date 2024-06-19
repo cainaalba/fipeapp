@@ -1,8 +1,8 @@
 package interfaces
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import continuarConsulta
 import model.NadaEncontradoModel
-import service.ContinuarConsulta
 
 interface ProcessaErroInterface {
     fun processar(responseBody: String?) {
@@ -17,8 +17,7 @@ interface ProcessaErroInterface {
         }
 
         resultado.onSuccess {
-            val continuarConsulta = ContinuarConsulta()
-            continuarConsulta.continuar()
+            continuarConsulta()
         }
     }
 }

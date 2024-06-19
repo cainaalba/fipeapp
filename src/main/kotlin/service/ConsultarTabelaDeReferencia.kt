@@ -6,6 +6,7 @@ import interfaces.ProcessaErroInterface
 import model.*
 import okhttp3.*
 import okhttp3.internal.EMPTY_REQUEST
+import tipoVeiculo
 import java.util.*
 
 class ConsultarTabelaDeReferencia : RequestInterface, ProcessaErroInterface {
@@ -25,9 +26,7 @@ class ConsultarTabelaDeReferencia : RequestInterface, ProcessaErroInterface {
 
             println("\nDigite o código do mês de referência para buscar:")
             val codigoTabelaReferencia = scanner.nextLine().toInt()
-
-            val tipoVeiculo = TipoVeiculo()
-            tipoVeiculo.tipoVeiculo(codigoTabelaReferencia)
+            tipoVeiculo(codigoTabelaReferencia)
         }
 
         resultado.onFailure {

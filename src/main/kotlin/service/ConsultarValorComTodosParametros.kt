@@ -1,6 +1,7 @@
 package service
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import continuarConsulta
 import interfaces.MontarJsonInterface
 import interfaces.ProcessaErroInterface
 import interfaces.RequestInterface
@@ -77,9 +78,7 @@ class ConsultarValorComTodosParametros : RequestInterface, MontarJsonInterface, 
                 ObjectMapper().readValue(responseBody, ConsultarValorComTodosParametrosModel::class.java)
 
             println(consultarValorComTodosParametrosModel.toString())
-
-            val continuarConsulta = ContinuarConsulta()
-            continuarConsulta.continuar()
+            continuarConsulta()
         }
 
         resultado.onFailure {
